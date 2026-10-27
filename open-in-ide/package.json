@@ -1,0 +1,61 @@
+{
+  "name": "open-in-ide",
+  "version": "1.2.0",
+  "private": true,
+  "muxy": {
+    "description": "Muxy 1.x's Open in IDE: open the active project or worktree in any installed editor, IDE, or Finder",
+    "background": "scripts/background.js",
+    "permissions": [
+      "commands:run-script",
+      "commands:exec",
+      "projects:read",
+      "worktrees:read",
+      "storage:read",
+      "storage:write",
+      "notifications:write",
+      "panels:write"
+    ],
+    "commands": [
+      {
+        "id": "open",
+        "title": "Open in IDE",
+        "subtitle": "Open the active project or worktree in the chosen app",
+        "action": { "kind": "runScript", "script": "scripts/open.js" }
+      },
+      {
+        "id": "open-with",
+        "title": "Open in IDE…",
+        "subtitle": "Pick an editor, IDE, or Finder and open the project there",
+        "action": { "kind": "runScript", "script": "scripts/open-with.js" }
+      },
+      {
+        "id": "choose",
+        "title": "Choose Project Target",
+        "action": { "kind": "openPopover", "popover": "choose" }
+      }
+    ],
+    "popovers": [
+      {
+        "id": "choose",
+        "entry": "menu/index.html",
+        "width": 220,
+        "height": 120,
+        "defaultData": { "mode": "select" }
+      }
+    ],
+    "topbarItems": [
+      {
+        "id": "open",
+        "icon": { "svg": "icons/code.svg" },
+        "tooltip": "Open project in IDE",
+        "command": "open"
+      },
+      {
+        "id": "choose",
+        "icon": "chevron.down",
+        "tooltip": "Choose project target",
+        "command": "choose"
+      }
+    ]
+  }
+}
