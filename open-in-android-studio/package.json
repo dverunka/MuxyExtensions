@@ -1,0 +1,31 @@
+{
+  "name": "open-in-android-studio",
+  "version": "1.0.0",
+  "private": true,
+  "muxy": {
+    "description": "Top-bar button that opens the active project or worktree in Android Studio, like Muxy 1.x's Open in IDE button",
+    "permissions": [
+      "commands:run-script",
+      "commands:exec",
+      "worktrees:read",
+      "projects:read",
+      "notifications:write"
+    ],
+    "commands": [
+      {
+        "id": "open",
+        "title": "Open in Android Studio",
+        "subtitle": "Open in IDE: active project or worktree",
+        "action": { "kind": "runScript", "script": "scripts/open.js" }
+      }
+    ],
+    "topbarItems": [
+      {
+        "id": "open",
+        "icon": { "svg": "icon.svg" },
+        "tooltip": "Open in Android Studio",
+        "command": "open"
+      }
+    ]
+  }
+}
